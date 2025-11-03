@@ -12,118 +12,155 @@
       --soft:#f6fbff;
       --card:#ffffff;
       --muted:#6b7280;
-      --glass: rgba(255,255,255,0.85);
+      --glass: rgba(255,255,255,0.88);
+      --accent: linear-gradient(90deg,var(--green),var(--blue));
     }
     html{scroll-behavior:smooth}
     *{box-sizing:border-box}
     body{
       margin:0;
       font-family:Inter, "Segoe UI", Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(47,155,79,0.06), transparent 10%),
-                  radial-gradient(900px 400px at 90% 90%, rgba(15,79,162,0.06), transparent 12%),
-                  linear-gradient(135deg,#e8f5ff 0%, #f0fff5 100%);
-      color:#0f1724;
+      background:
+        radial-gradient(800px 400px at 8% 12%, rgba(47,155,79,0.06), transparent 8%),
+        radial-gradient(700px 300px at 92% 88%, rgba(15,79,162,0.05), transparent 12%),
+        linear-gradient(135deg,#eaf6ff 0%, #f7fff8 100%);
+      color:#071224;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       line-height:1.45;
-      padding-bottom:80px;
+      padding-bottom:100px;
     }
+
+    /* subtle entrance */
+    .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.show{opacity:1;transform:none}
 
     /* NAV */
     .nav{
       position:sticky;
       top:0;
-      z-index:60;
+      z-index:120;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:16px;
       padding:12px 28px;
-      backdrop-filter: blur(6px);
-      background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.72));
-      border-bottom:1px solid rgba(15,79,162,0.04);
+      backdrop-filter: blur(8px) saturate(120%);
+      background: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,255,255,0.75));
+      border-bottom:1px solid rgba(15,79,162,0.06);
     }
     .nav-left{display:flex;align-items:center;gap:14px}
     .logo{
-      height:56px;
+      height:64px;
       width:auto;
-      border-radius:8px;
-      box-shadow:0 6px 20px rgba(15,79,162,0.06);
+      border-radius:10px;
+      box-shadow:0 10px 30px rgba(15,79,162,0.06);
+      transition:transform .35s ease, box-shadow .35s ease;
     }
-    .brand{font-weight:700;color:var(--blue);font-size:1.15rem;letter-spacing:0.3px}
-    .menu{display:flex;gap:12px}
+    .logo.float{animation:float 6s ease-in-out infinite}
+    @keyframes float {0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+    .brand{font-weight:800;color:var(--blue);font-size:1.18rem;letter-spacing:0.3px}
+    .menu{display:flex;gap:12px;align-items:center}
     .menu a{
-      text-decoration:none;color:var(--blue);font-weight:600;padding:8px 12px;border-radius:8px;transition:all .18s ease;
+      text-decoration:none;color:var(--blue);font-weight:700;padding:10px 14px;border-radius:10px;transition:all .18s ease;font-size:.98rem;
     }
-    .menu a:hover{background:rgba(47,155,79,0.06);color:var(--green)}
-    .cta-small{background:linear-gradient(90deg,var(--green),var(--blue));color:#fff;padding:8px 14px;border-radius:10px;text-decoration:none;font-weight:700}
+    .menu a:hover{background:rgba(47,155,79,0.06);color:var(--green);transform:translateY(-2px)}
+    .cta-small{background:var(--accent);color:#fff;padding:10px 16px;border-radius:12px;text-decoration:none;font-weight:800;box-shadow:0 8px 26px rgba(47,155,79,0.10)}
+
+    /* sticky price banner */
+    .price-banner{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:140;
+      background:linear-gradient(180deg,rgba(255,255,255,0.98),#fbfffb);
+      border-radius:14px;
+      padding:12px 18px;
+      box-shadow:0 18px 50px rgba(2,6,23,0.12);
+      display:flex;
+      gap:12px;
+      align-items:center;
+      border-left:6px solid var(--green);
+      transform:translateY(0);
+    }
+    .price-banner .line{font-size:.9rem;color:var(--muted)}
+    .price-banner .big{font-weight:900;color:var(--blue);font-size:1.35rem}
 
     /* HERO */
     .hero{
-      max-width:1200px;margin:26px auto 12px;padding:38px;border-radius:18px;background:var(--glass);
-      box-shadow:0 20px 50px rgba(15,79,162,0.06);
-      display:grid;grid-template-columns: 1fr 420px;gap:28px;align-items:center;
+      max-width:1240px;margin:36px auto 18px;padding:42px;border-radius:20px;background:var(--glass);
+      box-shadow:0 30px 80px rgba(15,79,162,0.06);
+      display:grid;grid-template-columns: 1fr 480px;gap:36px;align-items:center;
     }
-    .hero-left h1{margin:0;font-size:2.2rem;color:var(--blue)}
-    .hero-left p{margin:14px 0 20px;color:var(--muted);font-size:1.05rem}
-    .slogan{display:inline-block;background:linear-gradient(90deg,var(--green),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700}
-    .price-row{display:flex;gap:16px;align-items:center}
-    .price-card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 8px 24px rgba(15,79,162,0.05);min-width:200px}
-    .price-card h3{margin:0;font-size:1rem;color:var(--muted);font-weight:600}
-    .price-card .price{font-size:1.9rem;font-weight:800;color:var(--green);margin-top:6px}
-    .big-cta{margin-top:18px;padding:14px 22px;border-radius:12px;background:linear-gradient(90deg,var(--green),var(--blue));color:white;border:none;font-weight:800;font-size:1rem;cursor:pointer;box-shadow:0 10px 30px rgba(47,155,79,0.12)}
-    .big-cta:hover{transform:translateY(-3px);transition:transform .18s ease}
+    .hero-left h1{margin:0;font-size:2.6rem;color:var(--blue);line-height:1.05}
+    .hero-left p{margin:16px 0 24px;color:var(--muted);font-size:1.09rem}
+    .slogan{display:inline-block;background:var(--accent);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800;font-size:1.05rem}
+    .price-row{display:flex;gap:18px;align-items:center}
+    .price-card{background:var(--card);padding:20px;border-radius:14px;box-shadow:0 12px 34px rgba(15,79,162,0.05);min-width:220px;text-align:center}
+    .price-card h3{margin:0;font-size:1rem;color:var(--muted);font-weight:700}
+    .price-card .price{font-size:2.1rem;font-weight:900;color:var(--green);margin-top:8px}
+    .big-cta{margin-top:20px;padding:16px 26px;border-radius:14px;background:var(--accent);color:white;border:none;font-weight:900;font-size:1.05rem;cursor:pointer;box-shadow:0 18px 40px rgba(47,155,79,0.14)}
+    .big-cta:hover{transform:translateY(-4px);transition:transform .18s ease}
+    .big-cta.pulse{animation:pulse 2.6s infinite}
+    @keyframes pulse{0%{box-shadow:0 18px 40px rgba(47,155,79,0.08)}50%{box-shadow:0 26px 60px rgba(47,155,79,0.14)}100%{box-shadow:0 18px 40px rgba(47,155,79,0.08)}}
 
-    .hero-right{display:flex;flex-direction:column;align-items:center;gap:12px}
-    .hero-logo{width:260px;max-width:100%;border-radius:12px}
-    .feature-row{display:flex;gap:10px;margin-top:6px}
-    .feature{background:#f7fff7;padding:8px 10px;border-radius:999px;color:var(--green);font-weight:700;border:1px solid rgba(47,155,79,0.06)}
+    .hero-right{display:flex;flex-direction:column;align-items:center;gap:16px}
+    .hero-logo{width:320px;max-width:100%;border-radius:14px;box-shadow:0 18px 50px rgba(2,6,23,0.08);transition:transform .5s ease}
+    .hero-logo:hover{transform:scale(1.02) rotate(-1deg)}
+    .feature-row{display:flex;gap:12px;margin-top:8px;flex-wrap:wrap;justify-content:center}
+    .feature{background:#f7fff7;padding:10px 12px;border-radius:999px;color:var(--green);font-weight:800;border:1px solid rgba(47,155,79,0.06);font-size:.95rem}
 
     /* CONTENT SECTIONS */
     .container{max-width:1100px;margin:28px auto; padding:0 18px}
-    .card{background:var(--card);padding:26px;border-radius:14px;box-shadow:0 10px 30px rgba(2,6,23,0.04);margin-bottom:20px}
-    h2.section-title{color:var(--blue);margin-top:0}
-    p.lead{color:var(--muted);font-size:1.05rem}
+    .card{background:var(--card);padding:28px;border-radius:16px;box-shadow:0 10px 34px rgba(2,6,23,0.04);margin-bottom:22px}
+    h2.section-title{color:var(--blue);margin-top:0;font-size:1.5rem}
+    p.lead{color:var(--muted);font-size:1.06rem}
 
     /* PRICING PROMO */
-    .pricing-grid{display:flex;gap:18px;flex-wrap:wrap}
-    .pricing-large{flex:1;min-width:280px;padding:20px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfff8);box-shadow:0 14px 40px rgba(47,155,79,0.06);border-left:6px solid var(--green)}
+    .pricing-grid{display:flex;gap:18px;flex-wrap:wrap;margin-top:8px}
+    .pricing-large{flex:1;min-width:260px;padding:22px;border-radius:14px;background:linear-gradient(180deg,#fff,#fbfff8);box-shadow:0 16px 44px rgba(47,155,79,0.06);border-left:8px solid var(--green)}
     .pricing-large h3{margin:0;color:var(--green);font-size:1.25rem}
-    .pricing-large p{color:var(--muted)}
-    .price-big{font-size:2.8rem;color:var(--blue);font-weight:900;margin:8px 0}
-    .price-small{font-size:1.8rem;color:var(--blue);font-weight:800;margin:8px 0}
+    .price-big{font-size:3rem;color:var(--blue);font-weight:900;margin:10px 0}
+    .price-small{font-size:2rem;color:var(--blue);font-weight:900;margin:10px 0}
+    .price-medium{font-size:2.2rem;color:var(--blue);font-weight:900;margin:10px 0}
 
     /* GALLERY */
-    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-    .gallery-grid img{width:100%;height:170px;object-fit:cover;border-radius:12px;cursor:pointer;transition:transform .25s ease, box-shadow .25s ease}
-    .gallery-grid img:hover{transform:scale(1.03);box-shadow:0 12px 40px rgba(2,6,23,0.12)}
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .gallery-grid img{width:100%;height:320px;object-fit:cover;border-radius:14px;cursor:pointer;transition:transform .28s ease, box-shadow .28s ease}
+    .gallery-grid img:hover{transform:scale(1.04);box-shadow:0 20px 60px rgba(2,6,23,0.14)}
 
     /* LIGHTBOX */
-    .lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.6);z-index:200}
-    .lightbox img{max-width:92%;max-height:86%;border-radius:8px;box-shadow:0 20px 60px rgba(2,6,23,0.6)}
-    .lightbox.show{display:flex}
+    .lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.72);z-index:200;gap:18px;padding:24px}
+    .lightbox .holder{position:relative;max-width:92%;max-height:86%}
+    .lightbox img{width:100%;height:auto;border-radius:12px;box-shadow:0 28px 80px rgba(2,6,23,0.8)}
+    .lightbox .nav-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.06);border:none;color:white;padding:14px;border-radius:999px;cursor:pointer;font-size:1.1rem}
+    .lightbox .prev{left:-62px}
+    .lightbox .next{right:-62px}
+    .lightbox.show{display:flex;align-items:center;justify-content:center}
 
     /* CONTACT */
     .contact-row{display:flex;gap:18px;flex-wrap:wrap}
     .contact-card{flex:1;min-width:260px;padding:18px;border-radius:12px;background:#fff;border:1px solid rgba(15,79,162,0.03)}
     .muted{color:var(--muted)}
-    footer{max-width:1100px;margin:26px auto;padding:18px;text-align:center;color:var(--muted)}
+    footer{max-width:1100px;margin:36px auto;padding:18px;text-align:center;color:var(--muted)}
 
     /* responsive */
-    @media (max-width:920px){
+    @media (max-width:980px){
       .hero{grid-template-columns:1fr; padding:22px}
       .price-row{flex-direction:column;align-items:flex-start}
       .hero-right{order:-1}
+      .gallery-grid img{height:200px}
+      .hero-logo{width:220px}
     }
   </style>
 </head>
 <body>
   <!-- NAV -->
-  <header class="nav">
+  <header class="nav reveal">
     <div class="nav-left">
-      <img class="logo" id="siteLogo" src="Skjermbilde 2025-10-15 093427.png"
+      <img class="logo float" id="siteLogo" src="Skjermbilde 2025-10-15 093427.png"
            alt="Quick Sweep UB logo"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1612360601016-2f0b8133ae8a?auto=format&fit=crop&w=600&q=80'">
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1609034872201-45a1e53a7f2a?auto=format&fit=crop&w=800&q=80'">
       <div>
         <div class="brand">Quick Sweep UB</div>
         <div class="muted" style="font-size:.82rem">Miljøvennlig bilvask i Oslo</div>
@@ -139,37 +176,60 @@
     </nav>
   </header>
 
+  <!-- sticky price banner -->
+  <div class="price-banner reveal" aria-hidden="false">
+    <div style="display:flex;flex-direction:column">
+      <div class="line">Full pakke</div>
+      <div class="big">349 kr</div>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <div class="line">Kun innvendig</div>
+      <div class="big">249 kr</div>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <div class="line">Kun utvendig</div>
+      <div class="big">199 kr</div>
+    </div>
+  </div>
+
   <!-- HERO -->
-  <section class="hero" role="region" aria-labelledby="heroTitle">
+  <section class="hero reveal" role="region" aria-labelledby="heroTitle">
     <div class="hero-left">
       <h1 id="heroTitle">Ren bil. Grønn samvittighet.</h1>
-      <p class="lead">Hos oss kan du grønnvakse med god samvittighet. Vi bruker kun biologisk nedbrytbare produkter og jobber skånsomt for både bilen og miljøet.</p>
+      <p class="lead"><span class="slogan">Hos oss kan du grønnvaske med god samvittighet.</span> Vi leverer grundig håndvask, miljøvennlig interiørrens og rask service — alt til faste, tydelige priser.</p>
 
-      <div class="price-row">
-        <div class="price-card">
+      <div class="price-row" aria-hidden="false">
+        <div class="price-card" title="Full pakke">
           <h3>Full pakke</h3>
           <div class="price">349 kr</div>
-          <div class="muted" style="margin-top:6px">Innvendig og utvendig vask</div>
+          <div class="muted" style="margin-top:8px">Innvendig og utvendig vask</div>
         </div>
 
-        <div class="price-card">
+        <div class="price-card" title="Kun innvendig">
+          <h3>Kun innvendig</h3>
+          <div class="price">249 kr</div>
+          <div class="muted" style="margin-top:8px">Grundig innvendig rens og støvsuging</div>
+        </div>
+
+        <div class="price-card" title="Kun utvendig">
           <h3>Kun utvendig</h3>
           <div class="price">199 kr</div>
-          <div class="muted" style="margin-top:6px">Rask utvendig håndvask</div>
+          <div class="muted" style="margin-top:8px">Rask utvendig håndvask</div>
         </div>
       </div>
 
-      <button class="big-cta" onclick="location.href='https://instagram.com/quicksweepub'">Bestill via DM</button>
-      <div style="margin-top:12px;color:var(--muted)">Adresse gis kun via DM. Tjenesten gjelder kun i Oslo.</div>
+      <button class="big-cta pulse" onclick="location.href='https://instagram.com/quicksweepub'">Bestill via DM på Instagram</button>
+      <div style="margin-top:12px;color:var(--muted);font-weight:600">Adresse gis kun via DM. Tjenesten gjelder kun i Oslo.</div>
     </div>
 
-    <aside class="hero-right" aria-hidden="false">
+    <aside class="hero-right">
       <img class="hero-logo" src="Skjermbilde 2025-10-15 093427.png" alt="Quick Sweep UB logo"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=600&q=80'">
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=900&q=80'">
       <div class="feature-row">
         <div class="feature">Miljøvennlig</div>
         <div class="feature">Skånsom</div>
         <div class="feature">Rask service</div>
+        <div class="feature">Profesjonell</div>
       </div>
     </aside>
   </section>
@@ -199,14 +259,21 @@
       <div class="pricing-grid">
         <div class="pricing-large">
           <h3>Full pakke</h3>
-          <p>Innvendig og utvendig vask, grundig støvsuging og enkel interiørrens.</p>
+          <p>Innvendig og utvendig vask, grundig støvsuging og enkel interiørrens. Passer for de som vil ha bilen komplett rengjort.</p>
           <div class="price-big">349 kr</div>
           <p class="muted">Bestill via DM. Adresse gis kun i Oslo.</p>
         </div>
 
+        <div class="pricing-large">
+          <h3>Kun innvendig</h3>
+          <p>Grundig innvendig rens med støvsuging, fjerning av flekker og lette luktbehandlinger.</p>
+          <div class="price-medium">249 kr</div>
+          <p class="muted">Bestill via DM. Gjelder kun innenfor Oslo.</p>
+        </div>
+
         <div class="pricing-large" style="border-left-color:var(--blue)">
-          <h3>Kun utvendig vask</h3>
-          <p>Skånsom håndvask med miljøvennlige produkter. Rask leveringstid.</p>
+          <h3>Kun utvendig</h3>
+          <p>Skånsom håndvask, felgrens og tørk for en skinnende finish.</p>
           <div class="price-small">199 kr</div>
           <p class="muted">Bestill via DM. Gjelder kun innenfor Oslo.</p>
         </div>
@@ -215,17 +282,17 @@
 
     <section class="card" id="bilder">
       <h2 class="section-title">Galleri</h2>
-      <p class="muted">Klikk på et bilde for å se stor versjon.</p>
+      <p class="muted">Klikk på et bilde for å se i full størrelse. Hvis et bilde ikke ligger lokalt, vises en høyoppløst erstatning.</p>
 
       <div class="gallery-grid" aria-label="Bilder fra bilvask">
-        <img src="CTA-scaled.webp" alt="CTA bilde" onclick="openLight(this)"
-             onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80'">
-        <img src="Mobil-Bilvask-hos-dig.webp" alt="Mobil bilvask" onclick="openLight(this)"
-             onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1542365887-7d3a6efb6b0b?auto=format&fit=crop&w=1200&q=80'">
-        <img src="OIP.webp" alt="Bilvask 1" onclick="openLight(this)"
-             onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1511396279830-2f6a0f5cfb8b?auto=format&fit=crop&w=1200&q=80'">
-        <img src="OIP (1).webp" alt="Bilvask 2" onclick="openLight(this)"
-             onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1541446654331-2fbc6d3b926f?auto=format&fit=crop&w=1200&q=80'">
+        <img loading="lazy" src="CTA-scaled.webp" alt="CTA bilde" data-large="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1600&q=80" onclick="openLight(this)"
+             onerror="this.onerror=null;this.src=this.dataset.large">
+        <img loading="lazy" src="Mobil-Bilvask-hos-dig.webp" alt="Mobil bilvask" data-large="https://images.unsplash.com/photo-1542365887-7d3a6efb6b0b?auto=format&fit=crop&w=1600&q=80" onclick="openLight(this)"
+             onerror="this.onerror=null;this.src=this.dataset.large">
+        <img loading="lazy" src="OIP.webp" alt="Bilvask 1" data-large="https://images.unsplash.com/photo-1511396279830-2f6a0f5cfb8b?auto=format&fit=crop&w=1600&q=80" onclick="openLight(this)"
+             onerror="this.onerror=null;this.src=this.dataset.large">
+        <img loading="lazy" src="OIP (1).webp" alt="Bilvask 2" data-large="https://images.unsplash.com/photo-1541446654331-2fbc6d3b926f?auto=format&fit=crop&w=1600&q=80" onclick="openLight(this)"
+             onerror="this.onerror=null;this.src=this.dataset.large">
       </div>
     </section>
 
@@ -255,28 +322,68 @@
 
   <!-- LIGHTBOX -->
   <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true" onclick="closeLight(event)">
-    <img id="lightImg" src="" alt="Forstørret bilde">
+    <div class="holder">
+      <button class="nav-btn prev" aria-label="Forrige" onclick="navLight(-1)">‹</button>
+      <img id="lightImg" src="" alt="Forstørret bilde">
+      <button class="nav-btn next" aria-label="Neste" onclick="navLight(1)">›</button>
+    </div>
   </div>
 
   <script>
-    // lightbox
+    // gallery lightbox with next/prev and high-res fallback
+    const galleryImgs = Array.from(document.querySelectorAll('.gallery-grid img'));
+    let currentIndex = -1;
+
     function openLight(imgEl){
       const lb = document.getElementById('lightbox');
       const lightImg = document.getElementById('lightImg');
-      lightImg.src = imgEl.src;
+      currentIndex = galleryImgs.indexOf(imgEl);
+      const hi = imgEl.dataset.large || imgEl.src;
+      lightImg.src = hi;
       lb.classList.add('show');
       lb.setAttribute('aria-hidden','false');
     }
+
+    function navLight(dir){
+      if(currentIndex < 0) return;
+      currentIndex = (currentIndex + dir + galleryImgs.length) % galleryImgs.length;
+      const nxt = galleryImgs[currentIndex];
+      document.getElementById('lightImg').src = nxt.dataset.large || nxt.src;
+    }
+
     function closeLight(e){
+      // close when clicking backdrop or close button area
       if(e.target.id === 'lightbox' || e.target === document.getElementById('lightImg')){
-        document.getElementById('lightbox').classList.remove('show');
-        document.getElementById('lightbox').setAttribute('aria-hidden','true');
+        const lb = document.getElementById('lightbox');
+        lb.classList.remove('show');
+        lb.setAttribute('aria-hidden','true');
         document.getElementById('lightImg').src = '';
+        currentIndex = -1;
       }
     }
 
-    // shallow accessibility: enable keyboard close
-    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLight({target:document.getElementById('lightbox')}) });
+    // keyboard controls
+    document.addEventListener('keydown', (e)=>{
+      if(document.getElementById('lightbox').classList.contains('show')){
+        if(e.key === 'Escape') closeLight({target:document.getElementById('lightbox')});
+        if(e.key === 'ArrowRight') navLight(1);
+        if(e.key === 'ArrowLeft') navLight(-1);
+      }
+    });
+
+    // reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(en.isIntersecting) en.target.classList.add('show');
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // ensure galleryImgs list updates if images change
+    window.addEventListener('load', ()=> {
+      // re-query after load for any lazy replaced images
+      galleryImgs.splice(0, galleryImgs.length, ...Array.from(document.querySelectorAll('.gallery-grid img')));
+    });
   </script>
 </body>
 </html>
