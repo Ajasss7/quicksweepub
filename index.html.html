@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Quick Sweep UB – Miljøvennlig Bilvask</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, follow">
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #222;
+            min-height: 100vh;
+            background: linear-gradient(120deg, #e3f2fd 0%, #b2dfdb 100%);
+            animation: gradientBG 12s ease-in-out infinite;
+        }
+        @keyframes gradientBG {
+            0% {background: linear-gradient(120deg, #e3f2fd 0%, #b2dfdb 100%);}
+            50% {background: linear-gradient(120deg, #b2dfdb 0%, #e3f2fd 100%);}
+            100% {background: linear-gradient(120deg, #e3f2fd 0%, #b2dfdb 100%);}
+        }
+        .navbar {
+            background: rgba(255,255,255,0.98);
+            box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            height: 80px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .navbar .logo-img {
+            height: 60px;
+            width: auto;
+            margin-right: 24px;
+        }
+        .navbar .menu {
+            display: flex;
+            gap: 18px;
+        }
+        .navbar .menu button {
+            background: linear-gradient(90deg, #1976d2 0%, #388e3c 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 22px;
+            font-size: 1em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .navbar .menu button:hover, .navbar .menu button.active {
+            background: linear-gradient(90deg, #388e3c 0%, #1976d2 100%);
+            transform: scale(1.07);
+        }
+        .hero {
+            background: rgba(255,255,255,0.85);
+            padding: 60px 0 40px 0;
+            text-align: center;
+            border-radius: 0 0 40px 40px;
+            box-shadow: 0 8px 32px rgba(44,62,80,0.10);
+            margin-bottom: 24px;
+        }
+        .hero .hero-img {
+            width: 180px;
+            height: auto;
+            margin-bottom: 16px;
+            filter: drop-shadow(0 4px 16px #b2dfdb);
+        }
+        .hero .title {
+            font-size: 2.8em;
+            color: #1976d2;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        .hero .slagord {
+            font-size: 1.35em;
+            color: #388e3c;
+            margin-bottom: 18px;
+            font-style: italic;
+        }
+        .hero .cta-btn {
+            background: linear-gradient(90deg, #1976d2 0%, #388e3c 100%);
+            color: #fff;
+            padding: 16px 44px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.18em;
+            cursor: pointer;
+            margin-top: 18px;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.13);
+            transition: background 0.3s, transform 0.2s;
+        }
+        .hero .cta-btn:hover {
+            background: linear-gradient(90deg, #388e3c 0%, #1976d2 100%);
+            transform: scale(1.06);
+        }
+        .section {
+            max-width: 1100px;
+            margin: 40px auto;
+            background: rgba(255,255,255,0.97);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(44,62,80,0.10);
+            padding: 38px 32px;
+        }
+        .section h2 {
+            color: #1976d2;
+            margin-top: 0;
+            font-size: 2em;
+        }
+        .section p {
+            font-size: 1.12em;
+            margin-bottom: 18px;
+        }
+        .section ul {
+            margin: 18px 0 0 0;
+            padding-left: 18px;
+        }
+        .section li {
+            margin-bottom: 8px;
+            font-size: 1.08em;
+        }
+        .miljo-box {
+            background: #e8f5e9;
+            border-left: 6px solid #388e3c;
+            padding: 18px 22px;
+            margin: 24px 0;
+            border-radius: 10px;
+            color: #388e3c;
+            font-size: 1.08em;
+        }
+        .gallery {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 18px;
+        }
+        .gallery img {
+            width: 180px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+            border: 2px solid #e3f2fd;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .gallery img:hover {
+            transform: scale(1.08) rotate(-2deg);
+            box-shadow: 0 8px 24px rgba(44,62,80,0.18);
+        }
+        .pris {
+            font-size:1.25em; 
+            color:#388e3c; 
+            margin-top:18px;
+            font-weight: bold;
+        }
+        .kontakt {
+            margin: 40px auto 0 auto;
+            max-width: 1100px;
+            background: rgba(255,255,255,0.97);
+            border-radius: 14px;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+            padding: 28px 32px;
+            font-size: 1.1em;
+        }
+        .kontakt h3 {
+            color: #1976d2;
+            margin-top: 0;
+        }
+        .kontakt a {
+            color: #1976d2;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .kontakt a:hover {
+            color: #388e3c;
+        }
+        @media (max-width: 900px) {
+            .navbar {
+                flex-direction: column;
+                height: auto;
+                padding: 0 12px;
+            }
+            .navbar .menu {
+                gap: 10px;
+            }
+            .hero .hero-img {
+                width: 120px;
+            }
+            .section, .kontakt {
+                padding: 18px 8px;
+            }
+            .gallery img {
+                width: 120px;
+                height: 80px;
+            }
+        }
+    </style>
+    <script>
+        // Meny-knappene scroller til seksjonene
+        document.addEventListener("DOMContentLoaded", function() {
+            const buttons = document.querySelectorAll('.menu button');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const target = document.querySelector(btn.getAttribute('data-target'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="Skjermbilde 2025-10-15 093427.png" alt="Quick Sweep UB logo" class="logo-img">
+        <div class="menu">
+            <button data-target="#omoss">Om oss</button>
+            <button data-target="#tjenester">Tjenester</button>
+            <button data-target="#miljo">Miljø</button>
+            <button data-target="#bilder">Galleri</button>
+            <button data-target="#kontakt">Kontakt</button>
+        </div>
+    </nav>
+    <div class="hero">
+        <img src="Skjermbilde 2025-10-15 093427.png" alt="Quick Sweep UB logo" class="hero-img">
+        <div class="title">Quick Sweep UB</div>
+        <div class="slagord">Hos oss kan du grønnvakse med god samvittighet!</div>
+        <a href="#kontakt"><button class="cta-btn">Bestill bilvask</button></a>
+    </div>
+    <div class="section" id="omoss">
+        <h2>Om Quick Sweep UB</h2>
+        <p>
+            Quick Sweep UB er et moderne bilvaskfirma med fokus på miljø og kvalitet. Vi holder til ved Linderud T-banestasjon i Oslo, og tilbyr profesjonell håndvask av bil både innvendig og utvendig. Vårt mål er å gi deg en ren bil og en god opplevelse, samtidig som vi tar vare på miljøet.
+        </p>
+        <ul>
+            <li>Rask og effektiv service fra vårt hyggelige team</li>
+            <li>Vi bruker kun miljøvennlige og bærekraftige produkter</li>
+            <li>Du får fornøydhetsgaranti – vi gir oss ikke før du er fornøyd</li>
+            <li>Skånsom håndvask som beskytter lakken</li>
+            <li>Ekstra tjenester som innvendig rens, dekkskift og felgrens</li>
+            <li>Vi støtter lokalt næringsliv og grønn omstilling</li>
+        </ul>
+    </div>
+    <div class="section" id="tjenester">
+        <h2>Våre tjenester</h2>
+        <p>
+            Hos Quick Sweep UB kan du velge mellom flere tjenester for å få bilen din skinnende ren. Vi tilpasser vasken etter dine behov og ønsker.
+        </p>
+        <ul>
+            <li>Utvendig vask med skånsomme produkter</li>
+            <li>Innvendig vask og grundig støvsuging</li>
+            <li>Felgrens og dekkrens for ekstra glans</li>
+            <li>Interiørrens for et friskt miljø inne i bilen</li>
+            <li>Dekkskift både vår og høst</li>
+        </ul>
+        <div class="pris">
+            Bilvask fra 549 kr
+        </div>
+    </div>
+    <div class="section" id="miljo">
+        <h2>Miljøvennlig bilvask</h2>
+        <div class="miljo-box">
+            Vi tar miljøet på alvor! Alle våre produkter er biologisk nedbrytbare og trygge for naturen. Vi bruker mindre vann og ingen skadelige kjemikalier, slik at du kan vaske bilen med god samvittighet. Quick Sweep UB bidrar til et grønnere Oslo – én ren bil om gangen.
+        </div>
+    </div>
+    <div class="section" id="bilder">
+        <h2>Galleri</h2>
+        <div class="gallery">
+            <img src="CTA-scaled.webp" alt="Bilvask CTA">
+            <img src="Mobil-Bilvask-hos.webp" alt="Mobil Bilvask hos Quick Sweep UB">
+            <img src="OIP.webp" alt="Galleri OIP">
+            <!-- Hvis OIP (1).webp ikke åpner seg, fjern eller bytt ut med et annet bilde -->
+        </div>
+    </div>
+    <div class="kontakt" id="kontakt">
+        <h3>Kontakt oss</h3>
+        <p>Send oss gjerne en e-post hvis du har spørsmål eller ønsker å bestille bilvask.</p>
+        <p>E-post: <a href="mailto:quicksweepub@gmail.com">quicksweepub@gmail.com</a></p>
+        <p>Instagram: <a href="https://instagram.com/quicksweepub" target="_blank">@quicksweepub</a></p>
+        <p>Adresse: Bjerkeveien, ved Linderud T-banestasjon, Oslo</p>
+        <p>Åpningstider: Mandag til fredag 08:00–18:00</p>
+        <div style="margin-top:18px; color:#1976d2;">
+            <b>Velkommen til Quick Sweep UB – din grønne bilvask!</b>
+        </div>
+    </div>
+</body>
+</html>
