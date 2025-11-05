@@ -172,198 +172,198 @@
       <a href="#tjenester">Tjenester</a>
       <a href="#priser">Priser</a>
       <a href="#bilder">Galleri</a>
-      <a class="cta-small" href="https://instagram.com/quicksweepub" target="_blank" rel="noopener">Send DM</a>
+      <a class="cta-small" href="#kontakt">Bestill nå</a>
     </nav>
   </header>
 
-  <!-- sticky price banner -->
-  <div class="price-banner reveal" aria-hidden="false">
-    <div style="display:flex;flex-direction:column">
-      <div class="line">Full pakke</div>
-      <div class="big">349 kr</div>
-    </div>
-    <div style="display:flex;flex-direction:column">
-      <div class="line">Kun innvendig</div>
-      <div class="big">249 kr</div>
-    </div>
-    <div style="display:flex;flex-direction:column">
-      <div class="line">Kun utvendig</div>
-      <div class="big">199 kr</div>
-    </div>
+  <!-- PRICE BANNER -->
+  <div class="price-banner reveal">
+    <div class="line">Våre pakker fra</div>
+    <div class="big">199<span class="muted" style="font-size:.8rem">/mnd</span></div>
+    <a href="#priser" class="cta-small">Se priser</a>
   </div>
 
   <!-- HERO -->
-  <section class="hero reveal" role="region" aria-labelledby="heroTitle">
+  <section class="hero" id="home">
     <div class="hero-left">
-      <h1 id="heroTitle">Ren bil. Grønn samvittighet.</h1>
-      <p class="lead"><span class="slogan">Hos oss kan du grønnvaske med god samvittighet.</span> Vi leverer grundig håndvask, miljøvennlig interiørrens og rask service — alt til faste, tydelige priser.</p>
+      <h1 class="reveal">Miljøvennlig bilvask i Oslo</h1>
+      <p class="lead reveal">Få bilen din til å skinne med vår profesjonelle og miljøvennlige bilvask. Vi bruker kun de beste produktene for å ta vare på bilen din og naturen.</p>
 
-      <div class="price-row" aria-hidden="false">
-        <div class="price-card" title="Full pakke">
-          <h3>Full pakke</h3>
-          <div class="price">349 kr</div>
-          <div class="muted" style="margin-top:8px">Innvendig og utvendig vask</div>
+      <div class="price-row">
+        <div class="price-card reveal">
+          <h3 class="muted">Basisvask</h3>
+          <div class="price">199<span class="muted" style="font-size:.8rem">/mnd</span></div>
         </div>
 
-        <div class="price-card" title="Kun innvendig">
-          <h3>Kun innvendig</h3>
-          <div class="price">249 kr</div>
-          <div class="muted" style="margin-top:8px">Grundig innvendig rens og støvsuging</div>
+        <div class="price-card reveal">
+          <h3 class="muted">Plussvask</h3>
+          <div class="price">299<span class="muted" style="font-size:.8rem">/mnd</span></div>
         </div>
 
-        <div class="price-card" title="Kun utvendig">
-          <h3>Kun utvendig</h3>
-          <div class="price">199 kr</div>
-          <div class="muted" style="margin-top:8px">Rask utvendig håndvask</div>
+        <div class="price-card reveal">
+          <h3 class="muted">Proffvask</h3>
+          <div class="price">399<span class="muted" style="font-size:.8rem">/mnd</span></div>
         </div>
       </div>
 
-      <button class="big-cta pulse" onclick="location.href='https://instagram.com/quicksweepub'">Bestill via DM på Instagram</button>
-      <div style="margin-top:12px;color:var(--muted);font-weight:600">Adresse gis kun via DM. Tjenesten gjelder kun i Oslo.</div>
+      <button class="big-cta reveal" id="ctaHero">Bestill nå</button>
     </div>
 
-    <aside class="hero-right">
-      <img class="hero-logo" src="Skjermbilde 2025-10-15 093427.png" alt="Quick Sweep UB logo"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=900&q=80'">
-      <div class="feature-row">
-        <div class="feature">Miljøvennlig</div>
-        <div class="feature">Skånsom</div>
-        <div class="feature">Rask service</div>
-        <div class="feature">Profesjonell</div>
-      </div>
-    </aside>
+    <div class="hero-right reveal">
+      <img class="hero-logo" id="heroImg" src="Skjermbilde 2025-10-15 093427.png"
+           alt="Bilvask bilde"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1609034872201-45a1e53a7f2a?auto=format&fit=crop&w=800&q=80'">
+    </div>
   </section>
 
-  <!-- MAIN CONTENT -->
-  <main class="container" role="main">
-    <section class="card" id="omoss">
-      <h2 class="section-title">Om oss</h2>
-      <p class="lead">Quick Sweep UB er en mobil bilvasktjeneste i Oslo som tilbyr miljøvennlig bilvask med høy kvalitet. Vi bruker skånsomme, men effektive metoder for å gi bilen din en grundig rengjøring, både innvendig og utvendig.</p>
-      <p class="muted">Vår visjon er å gjøre bilvask enklere og mer tilgjengelig for alle, samtidig som vi tar vare på miljøet. Vi tilbyr fleksible løsninger som passer for alle typer biler og behov.</p>
-    </section>
+  <!-- OM OSS -->
+  <section class="container" id="omoss">
+    <h2 class="section-title reveal">Om oss</h2>
+    <p class="lead reveal">Vi er et team av bilentusiaster som brenner for å gi bilen din den beste behandlingen. Vår miljøvennlige bilvask er ikke bare bra for bilen din, men også for planeten.</p>
 
-    <section class="card" id="tjenester">
-      <h2 class="section-title">Tjenester</h2>
-      <ul class="muted" style="line-height:1.6">
-        <li>Håndvask av bilens eksteriør</li>
-        <li>Interiørrens med støvsuging og kjemisk rens</li>
-        <li>Motorvask</li>
-        <li>Felgrens og dekkshine</li>
-        <li>Rubbing og polering</li>
-        <li>Keramisk coating (tilleggstjeneste)</li>
-      </ul>
-      <p style="margin-top:12px;color:var(--muted);font-size:.9rem">Alle tjenester utføres med miljøvennlige produkter og metoder.</p>
-    </section>
-
-    <section class="card" id="priser">
-      <h2 class="section-title">Priser</h2>
-      <div class="pricing-grid">
-        <div class="pricing-large">
-          <h3>Full pakke</h3>
-          <p>Innvendig og utvendig vask, grundig støvsuging og enkel interiørrens. Passer for de som vil ha bilen komplett rengjort.</p>
-          <div class="price-big">349 kr</div>
-          <p class="muted">Bestill via DM. Adresse gis kun i Oslo.</p>
-        </div>
-
-        <div class="pricing-large">
-          <h3>Kun innvendig</h3>
-          <p>Grundig innvendig rens med støvsuging, fjerning av flekker og lette luktbehandlinger.</p>
-          <div class="price-medium">249 kr</div>
-          <p class="muted">Bestill via DM. Gjelder kun innenfor Oslo.</p>
-        </div>
-
-        <div class="pricing-large" style="border-left-color:var(--blue)">
-          <h3>Kun utvendig</h3>
-          <p>Skånsom håndvask, felgrens og tørk for en skinnende finish.</p>
-          <div class="price-small">199 kr</div>
-          <p class="muted">Bestill via DM. Gjelder kun innenfor Oslo.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="card" id="bilder">
-      <h2 class="section-title">Galleri</h2>
-      <p class="muted">Klikk på et bilde for å se i full størrelse. Hvis et bilde ikke ligger lokalt, vises en høyoppløst erstatning.</p>
-
-      <div class="gallery-grid" aria-label="Bilder fra bilvask">
-        <img loading="lazy" src="CTA-scaled.webp" alt="CTA bilde" data-large="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1600&q=80" onclick="openLight(this)"
-             onerror="this.onerror=null;this.src=this.dataset.large">
-        <img loading="lazy" src="Mobil-Bilvask-hos-dig.webp" alt="Mobil bilvask" data-large="https://images.unsplash.com/photo-1542365887-7d3a6efb6b0b?auto=format&fit=crop&w=1600&q=80" onclick="openLight(this)"
-             onerror="this.onerror=null;this.src=this.dataset.large">
-        <img loading="lazy" src="OIP.webp" alt="Bilvask 1" data-large="https://images.unsplash.com/photo-1511396279830-2f6a0f5cfb8b?auto=format&fit=crop&w=1600&q=80" onclick="openLight(this)"
-             onerror="this.onerror=null;this.src=this.dataset.large">
-        <img loading="lazy" src="OIP (1).webp" alt="Bilvask 2" data-large="https://images.unsplash.com/photo-1541446654331-2fbc6d3b926f?auto=format&fit=crop&w=1600&q=80" onclick="openLight(this)"
-             onerror="this.onerror=null;this.src=this.dataset.large">
-      </div>
-    </section>
-  </main>
-
-  <!-- LIGHTBOX -->
-  <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true" onclick="closeLight(event)">
-    <div class="holder">
-      <button class="nav-btn prev" aria-label="Forrige" onclick="navLight(-1)">‹</button>
-      <img id="lightImg" src="" alt="Forstørret bilde">
-      <button class="nav-btn next" aria-label="Neste" onclick="navLight(1)">›</button>
+    <div class="feature-row">
+      <div class="feature reveal">Erfaring siden 2010</div>
+      <div class="feature reveal">Over 10.000 fornøyde kunder</div>
+      <div class="feature reveal">100% miljøvennlige produkter</div>
     </div>
-  </div>
+  </section>
 
+  <!-- TJENESTER -->
+  <section class="container" id="tjenester">
+    <h2 class="section-title reveal">Våre tjenester</h2>
+    <p class="lead reveal">Vi tilbyr et bredt spekter av bilvask tjenester for å møte dine behov. Enten du trenger en rask vask eller en grundig detailing, har vi pakken for deg.</p>
+
+    <div class="pricing-grid">
+      <div class="pricing-large reveal">
+        <h3>Basisvask</h3>
+        <div class="price-big">199<span class="muted" style="font-size:.8rem">/mnd</span></div>
+        <p class="muted">Enkel vask av bilens eksteriør</p>
+        <button class="big-cta" data-package="Basisvask">Bestill Basisvask</button>
+      </div>
+
+      <div class="pricing-large reveal">
+        <h3>Plussvask</h3>
+        <div class="price-big">299<span class="muted" style="font-size:.8rem">/mnd</span></div>
+        <p class="muted">Vask av eksteriør og interiør</p>
+        <button class="big-cta" data-package="Plussvask">Bestill Plussvask</button>
+      </div>
+
+      <div class="pricing-large reveal">
+        <h3>Proffvask</h3>
+        <div class="price-big">399<span class="muted" style="font-size:.8rem">/mnd</span></div>
+        <p class="muted">Full detailing av bilen</p>
+        <button class="big-cta" data-package="Proffvask">Bestill Proffvask</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERI -->
+  <section class="container" id="bilder">
+    <h2 class="section-title reveal">Galleri</h2>
+    <p class="lead reveal">Se noen av våre nylige prosjekter og bli inspirert av resultatene.</p>
+
+    <div class="gallery-grid reveal">
+      <img src="https://images.unsplash.com/photo-1609034872201-45a1e53a7f2a?auto=format&fit=crop&w=800&q=80" alt="Første bilde" class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1609034872201-45a1e53a7f2a?auto=format&fit=crop&w=800&q=80" alt="Andre bilde" class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1609034872201-45a1e53a7f2a?auto=format&fit=crop&w=800&q=80" alt="Tredje bilde" class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1609034872201-45a1e53a7f2a?auto=format&fit=crop&w=800&q=80" alt="Fjerde bilde" class="gallery-item">
+    </div>
+  </section>
+
+  <!-- KONTAKT (erstatt eksisterende blokk med denne) -->
+  <section class="card" id="kontakt">
+    <h2 class="section-title">Kontakt og bestilling</h2>
+    <div class="contact-row">
+      <div class="contact-card">
+        <h3>Send DM på Instagram</h3>
+        <p>Raskest svar: <a href="https://instagram.com/quicksweep_" target="_blank" rel="noopener">@quicksweep_</a></p>
+        <p class="muted">Vi svarer vanligvis innen 24 timer.</p>
+      </div>
+
+      <div class="contact-card">
+        <h3>Skriv til oss på e-post</h3>
+        <p>For booking og faktura: <a href="mailto:quicksweepub@gmail.com">quicksweepub@gmail.com</a></p>
+        <p class="muted" style="margin-top:8px">Adresse og bookingopplysninger gis kun etter DM eller e-post. Tjenesten gjelder i Oslo.</p>
+      </div>
+    </div>
+
+    <p class="muted" style="margin-top:12px;font-weight:700">NB: Vi tilbyr ikke polering eller keramisk coating.</p>
+  </section>
+
+  <!-- FOOTER (legg til en enkel footer) -->
+  <footer>
+    <p style="margin:0;font-size:.9rem">&copy; 2025 Quick Sweep UB. Alle rettigheter reservert.</p>
+  </footer>
+
+  <!-- SCRIPT -->
   <script>
-    // gallery lightbox with next/prev and high-res fallback
-    const galleryImgs = Array.from(document.querySelectorAll('.gallery-grid img'));
-    let currentIndex = -1;
+    // enkel scroll til seksjoner
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
 
-    function openLight(imgEl){
-      const lb = document.getElementById('lightbox');
-      const lightImg = document.getElementById('lightImg');
-      currentIndex = galleryImgs.indexOf(imgEl);
-      const hi = imgEl.dataset.large || imgEl.src;
-      lightImg.src = hi;
-      lb.classList.add('show');
-      lb.setAttribute('aria-hidden','false');
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      });
+    });
+
+    // avsløring av elementer ved scrolling
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    reveals.forEach(reveal => {
+      observer.observe(reveal);
+    });
+
+    // lysbilde galleri
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.gallery-item');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.style.display = (i === index) ? 'block' : 'none';
+      });
     }
 
-    function navLight(dir){
-      if(currentIndex < 0) return;
-      currentIndex = (currentIndex + dir + galleryImgs.length) % galleryImgs.length;
-      const nxt = galleryImgs[currentIndex];
-      document.getElementById('lightImg').src = nxt.dataset.large || nxt.src;
-    }
-
-    function closeLight(e){
-      // close when clicking backdrop or close button area
-      if(e.target.id === 'lightbox' || e.target === document.getElementById('lightImg')){
-        const lb = document.getElementById('lightbox');
-        lb.classList.remove('show');
-        lb.setAttribute('aria-hidden','true');
-        document.getElementById('lightImg').src = '';
-        currentIndex = -1;
-      }
-    }
-
-    // keyboard controls
-    document.addEventListener('keydown', (e)=>{
-      if(document.getElementById('lightbox').classList.contains('show')){
-        if(e.key === 'Escape') closeLight({target:document.getElementById('lightbox')});
-        if(e.key === 'ArrowRight') navLight(1);
-        if(e.key === 'ArrowLeft') navLight(-1);
+    document.querySelector('.lightbox').addEventListener('click', function (e) {
+      if (e.target.classList.contains('lightbox')) {
+        this.classList.remove('show');
       }
     });
 
-    // reveal on scroll
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(en=>{
-        if(en.isIntersecting) en.target.classList.add('show');
+    document.querySelectorAll('.gallery-item').forEach((img, index) => {
+      img.addEventListener('click', function () {
+        currentSlide = index;
+        showSlide(currentSlide);
+        document.querySelector('.lightbox').classList.add('show');
       });
-    }, {threshold:0.12});
-    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    });
 
-    // ensure galleryImgs list updates if images change
-    window.addEventListener('load', ()=> {
-      // re-query after load for any lazy replaced images
-      galleryImgs.splice(0, galleryImgs.length, ...Array.from(document.querySelectorAll('.gallery-grid img')));
+    document.querySelector('.lightbox .prev').addEventListener('click', function () {
+      currentSlide = (currentSlide > 0) ? currentSlide - 1 : totalSlides - 1;
+      showSlide(currentSlide);
+    });
+
+    document.querySelector('.lightbox .next').addEventListener('click', function () {
+      currentSlide = (currentSlide < totalSlides - 1) ? currentSlide + 1 : 0;
+      showSlide(currentSlide);
+    });
+
+    // CTA knapp animasjon
+    document.getElementById('ctaHero').addEventListener('click', function () {
+      this.classList.add('pulse');
+      setTimeout(() => { this.classList.remove('pulse'); }, 2600);
     });
   </script>
 </body>
 </html>
-
-
