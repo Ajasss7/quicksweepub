@@ -179,7 +179,7 @@
   <!-- PRICE BANNER -->
   <div class="price-banner reveal">
     <div class="line">Våre pakker fra</div>
-    <div class="big">199<span class="muted" style="font-size:.8rem">/mnd</span></div>
+    <div class="big">199 kr</div>
     <a href="#priser" class="cta-small">Se priser</a>
   </div>
 
@@ -301,69 +301,68 @@
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
-
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
 
     // avsløring av elementer ved scrolling
     const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
+    if (reveals.length) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      reveals.forEach(reveal => observer.observe(reveal));
+    }
 
-    reveals.forEach(reveal => {
-      observer.observe(reveal);
-    });
-
-    // lysbilde galleri
+    // bilde-galleri / lightbox - trygg oppsett
+    const slides = Array.from(document.querySelectorAll('.gallery-item'));
+    const lightbox = document.querySelector('.lightbox');
+    const prevBtn = lightbox ? lightbox.querySelector('.prev') : null;
+    const nextBtn = lightbox ? lightbox.querySelector('.next') : null;
     let currentSlide = 0;
-    const slides = document.querySelectorAll('.gallery-item');
-    const totalSlides = slides.length;
 
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.style.display = (i === index) ? 'block' : 'none';
+    function showSlide(index){
+      if (!slides.length || !lightbox) return;
+      slides.forEach((s,i)=> s.style.display = (i === index) ? 'block' : 'none');
+      lightbox.style.display = 'flex';
+      currentSlide = index;
+    }
+
+    function hideLightbox(){
+      if (!lightbox) return;
+      lightbox.style.display = 'none';
+      slides.forEach(s=> s.style.display = '');
+      currentSlide = 0;
+    }
+
+    if (slides.length && lightbox) {
+      slides.forEach((img, i) => img.addEventListener('click', ()=> showSlide(i)));
+      if (prevBtn) prevBtn.addEventListener('click', ()=> showSlide((currentSlide>0)?currentSlide-1:slides.length-1));
+      if (nextBtn) nextBtn.addEventListener('click', ()=> showSlide((currentSlide<slides.length-1)?currentSlide+1:0));
+      lightbox.addEventListener('click', (e)=> { if (e.target === lightbox) hideLightbox(); });
+      document.addEventListener('keydown', (e)=> {
+        if (lightbox.style.display === 'flex') {
+          if (e.key === 'Escape') hideLightbox();
+          if (e.key === 'ArrowRight') showSlide((currentSlide+1)%slides.length);
+          if (e.key === 'ArrowLeft') showSlide((currentSlide-1+slides.length)%slides.length);
+        }
       });
     }
 
-    document.querySelector('.lightbox').addEventListener('click', function (e) {
-      if (e.target.classList.contains('lightbox')) {
-        this.classList.remove('show');
-      }
-    });
-
-    document.querySelectorAll('.gallery-item').forEach((img, index) => {
-      img.addEventListener('click', function () {
-        currentSlide = index;
-        showSlide(currentSlide);
-        document.querySelector('.lightbox').classList.add('show');
+    // CTA knapp animasjon (sjekk at element finnes)
+    const cta = document.getElementById('ctaHero');
+    if (cta) {
+      cta.addEventListener('click', function () {
+        this.classList.add('pulse');
+        setTimeout(() => { this.classList.remove('pulse'); }, 2600);
       });
-    });
-
-    document.querySelector('.lightbox .prev').addEventListener('click', function () {
-      currentSlide = (currentSlide > 0) ? currentSlide - 1 : totalSlides - 1;
-      showSlide(currentSlide);
-    });
-
-    document.querySelector('.lightbox .next').addEventListener('click', function () {
-      currentSlide = (currentSlide < totalSlides - 1) ? currentSlide + 1 : 0;
-      showSlide(currentSlide);
-    });
-
-    // CTA knapp animasjon
-    document.getElementById('ctaHero').addEventListener('click', function () {
-      this.classList.add('pulse');
-      setTimeout(() => { this.classList.remove('pulse'); }, 2600);
-    });
+    }
   </script>
 
   <!-- LIGHTBOX (til script) -->
@@ -374,4 +373,5 @@
   </div>
 </body>
 </html>
+
 
